@@ -13,10 +13,7 @@ public class Question {
 
     public Question(String subCategory, int questionNumber) throws IOException {
 
-        String folder = subCategory.substring(0,1).toUpperCase() + subCategory.substring(1);
-        String file = folder + "Question" + Integer.toString(questionNumber);
-        String path = "";
-        String location = path + "\\" + folder + "\\" + file;
+        String location = "";
         Scanner scanner = new Scanner(new File(location));
         q = scanner.nextLine();
         ans = "ABCD".indexOf(scanner.nextLine());
