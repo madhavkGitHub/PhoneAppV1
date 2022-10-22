@@ -59,16 +59,20 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (submitted) Toast.makeText(getContext(), "Already Submitted", Toast.LENGTH_SHORT).show();
+        if (submitted) {
+            if (id == R.id.btnSubmit) {
+                ((QuestionSequence) getActivity()).nextQuestion();
+            }
+        }
         else if (id == R.id.btnSubmit) {
             if (curr_select == -1) Toast.makeText(getContext(), "Select an Answer", Toast.LENGTH_SHORT).show();
             else {
                 submitted = true;
-                if (question.check(curr_select)) {
-                    buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.correct));
-                } else {
+                if (!question.check(curr_select)) {
                     buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.incorrect));
                 }
+                buttons[question.getAns()].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.correct));
+                submit.setText("Continue");
             }
         } else {
             int select = 0;

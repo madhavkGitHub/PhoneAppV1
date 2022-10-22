@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView"
         android:backgroundTint="@android:color/holo_green_light"
         android:textColor="@color/material_dynamic_neutral_variant30"/>
@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
         android:layout_centerHorizontal="true"
         tools:layout="@layout/mc_question" />

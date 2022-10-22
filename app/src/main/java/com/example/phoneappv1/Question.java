@@ -44,4 +44,15 @@ public class Question  implements Serializable {
     public boolean isAnsCorrect() {
         return ansCorrect;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "q='" + q + '\'' +
+                ", options=" + Arrays.toString(options) +
+                ", ans=" + ans +
+                ", dif=" + dif +
+                ", ansCorrect=" + ansCorrect +
+                '}';
+    }
 }

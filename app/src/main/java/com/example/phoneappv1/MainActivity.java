@@ -1,21 +1,21 @@
 package com.example.phoneappv1;
 
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.example.phoneappv1.databinding.ActivityMainBinding;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,17 +24,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        try {
+            Intent intent = new Intent(this, QuestionSequence.class);
+            Bundle b = new Bundle();
+            System.out.println("hi");
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Question q = new Question(
-                "What is 1 + 1?",
-                new String[]{"0", "1", "2", "3"},
-                2,
-                1
-        );
-        ft.replace(R.id.fragmentContainerView, MCQuestionFragment.newInstance(q, qNum));
-        ft.commit();
+            BufferedReader br = new BufferedReader(new InputStreamReader(this.getAssets().open("Biology" + ".txt")));
+
+            QuestionReader subQues = new QuestionReader(br);
+
+            b.putSerializable("QuestionReader", subQues);
+            b.putInt("total", 5);
+            intent.putExtras(b);
+
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
     public void onClick(View view) {
