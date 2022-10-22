@@ -1,0 +1,35 @@
+How many significant figures are in 20000kg?
+D
+Four
+Zero
+Five
+One
+1
+Which of these is not an SI unit?
+B
+Coulomb
+Gallon
+Meter
+Weber
+2
+Which of the following is a vector quantity?
+B
+Distance
+Weight
+Density
+Mass
+3
+Three capacitors of equal capacitance are in a series circuit. If the total capacitance is 12F, what is the capacitance of each individual capacitor?
+B
+4F
+36F
+1/36F
+1/4F
+4
+An electrical circuit has a total of 3.22 ohms resistance and 8V. What is the current?
+A
+2.48a
+0.089a
+0.403a
+11.22a
+5
