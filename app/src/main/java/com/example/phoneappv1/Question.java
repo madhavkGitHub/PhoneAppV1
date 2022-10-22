@@ -11,17 +11,11 @@ public class Question {
     public int ans; // index of correct answer
     public int dif;
 
-    public Question(String subCategory, int questionNumber) throws IOException {
-
-        String location = "";
-        Scanner scanner = new Scanner(new File(location));
-        q = scanner.nextLine();
-        ans = "ABCD".indexOf(scanner.nextLine());
-        options[0] = scanner.nextLine();
-        options[1] = scanner.nextLine();
-        options[2] = scanner.nextLine();
-        options[3] = scanner.nextLine();
-        dif = scanner.nextInt();
+    public Question(String question, String[] o, int a, int d) {
+        q = question;
+        options = o;
+        ans = a;
+        dif = d;
     }
 
     public boolean check_madav_way(String answer) {
