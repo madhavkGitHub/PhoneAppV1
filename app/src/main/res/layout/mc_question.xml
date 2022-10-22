@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/mc_ques"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="wrap_content"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="Question" />
+
+    <Button
+        android:id="@+id/btnA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtQuestion"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:text="Answer A"
+        android:backgroundTint="#C9CCCD"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btnB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnA"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#C9CCCD"
+        android:text="Answer B"
+        android:textColor="@color/black"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnC"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_below="@id/btnB"
+        android:backgroundTint="#C9CCCD"
+        android:textColor="@color/black"
+        android:text="Answer C" />
+
+    <Button
+        android:id="@+id/btnD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnC"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#C9CCCD"
+        android:text="Answer D"
+        android:textColor="@color/black"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnD"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/teal_700"
+        android:text="Submit"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="25sp" />
+</RelativeLayout>
