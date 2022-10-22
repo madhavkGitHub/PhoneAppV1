@@ -15,7 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.phoneappv1.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityMainBinding binding;
 
@@ -23,6 +23,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    public void onClick(View view) {
+        switch (((Button) view).getText().toString()) {
+            case "Math":
+                break;
+            case "Physics":
+                break;
+            case "Biology":
+                break;
+            case "Chemistry":
+                break;
+            default:
+                // shouldn't happen
+        }
     }
 
 }
