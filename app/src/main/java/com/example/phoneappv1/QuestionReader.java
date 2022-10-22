@@ -5,7 +5,7 @@ import java.io.*;
 
 public class QuestionReader {
 
-    HashMap<Integer, Question> qHashMap = new HashMap<Integer, Question>();
+    HashMap<Integer, ArrayList<Question>> qHashMap = new HashMap<Integer, ArrayList<Question>>();
     ArrayList<Question> qlist = new ArrayList<Question>();
     String filename = null;
     Boolean fileExists = false;
@@ -29,6 +29,7 @@ public class QuestionReader {
         int ans;
         char c;
         int dif;
+        ArrayList<Question> diflist = new ArrayList<Question>();
 
         while (fileExists && infile.hasNextLine()) {
 
@@ -42,7 +43,11 @@ public class QuestionReader {
             dif = Integer.parseInt(infile.nextLine());
             q = new Question(question, options, ans - 65, dif);
             qlist.add(q);
-            qHashMap.put(dif, q);
+            if (qHashMap.get(q.getDif()) != null)
+                diflist = qHashMap.get(q.getDif());
+            diflist.add(q);
+            qHashMap.put(dif,diflist);
+            diflist.removeAll(diflist);
         }
     }
 
