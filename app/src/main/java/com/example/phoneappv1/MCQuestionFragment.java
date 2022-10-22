@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,49 +14,69 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 public class MCQuestionFragment extends Fragment implements View.OnClickListener {
-    Button A, B, C, D, submit, curr_select;
-    TextView question;
+    Button[] buttons = new Button[4];
+    int[] ids = new int[]{R.id.btnA, R.id.btnB, R.id.btnC, R.id.btnD};
+    String[] name = new String[]{"A", "B", "C", "D"};
+    Button submit;
+    int curr_select = -1;
+    TextView q;
+    Question question;
+    boolean submitted = false;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.mc_question, container, false);
     }
 
+    public static MCQuestionFragment newInstance(Question q, int num) {
+        Bundle args = new Bundle();
+        args.putSerializable("question", q);
+        args.putInt("probNum", num);
+        MCQuestionFragment fragment = new MCQuestionFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        A = view.findViewById(R.id.btnA); B = view.findViewById(R.id.btnB); C = view.findViewById(R.id.btnC); D = view.findViewById(R.id.btnD);
+        q = view.findViewById(R.id.txtQuestion);
         submit = view.findViewById(R.id.btnSubmit);
-        question = view.findViewById(R.id.txtQuestion);
-        A.setOnClickListener(this);
-        B.setOnClickListener(this);
-        C.setOnClickListener(this);
-        D.setOnClickListener(this);
         submit.setOnClickListener(this);
+
+        Bundle args = getArguments();
+        question = (Question) args.get("question");
+        int probNum = args.getInt("probNum");
+
+        q.setText(probNum + ") " + question.getQ());
+        String[] ops = question.getOptions();
+        for (int i = 0; i < 4; i++) {
+            buttons[i] = view.findViewById(ids[i]);
+            buttons[i].setOnClickListener(this);
+            buttons[i].setText(name[i] + ") " +  ops[i]);
+        }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnA:
-                if (curr_select != null) curr_select.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                A.setBackgroundColor(getResources().getColor(R.color.btnSelect));
-                curr_select = A;
-                break;
-            case R.id.btnB:
-                if (curr_select != null) curr_select.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                B.setBackgroundColor(getResources().getColor(R.color.btnSelect));
-                curr_select = B;
-                break;
-            case R.id.btnC:
-                if (curr_select != null) curr_select.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                C.setBackgroundColor(getResources().getColor(R.color.btnSelect));
-                curr_select = C;
-                break;
-            case R.id.btnD:
-                if (curr_select != null) curr_select.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                D.setBackgroundColor(getResources().getColor(R.color.btnSelect));
-                curr_select = D;
-                break;
+        int id = view.getId();
+        if (submitted) Toast.makeText(getContext(), "Already Submitted", Toast.LENGTH_SHORT).show();
+        else if (id == R.id.btnSubmit) {
+            if (curr_select == -1) Toast.makeText(getContext(), "Select an Answer", Toast.LENGTH_SHORT).show();
+            else {
+                submitted = true;
+                if (question.check(curr_select)) {
+                    buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.correct));
+                } else {
+                    buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.incorrect));
+                }
+            }
+        } else {
+            int select = 0;
+            for (int i = 0; i < ids.length; i++) if (ids[i] == id) select = i;
 
+            if (curr_select != -1) buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+            buttons[select].setBackgroundColor(getResources().getColor(R.color.btnSelect));
+            curr_select = select;
         }
     }
 }

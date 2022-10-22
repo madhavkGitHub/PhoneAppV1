@@ -20,7 +20,7 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:textColor="@color/material_dynamic_neutral_variant30"/>
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/fragmentContainerView"
         android:name="com.example.phoneappv1.MCQuestionFragment"
         android:layout_width="match_parent"
