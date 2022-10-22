@@ -5,6 +5,7 @@ import java.io.*;
 
 public class QuestionReader {
 
+    HashMap<Integer, Question> qHashMap = new HashMap<Integer, Question>();
     ArrayList<Question> qlist = new ArrayList<Question>();
     String filename = null;
     Boolean fileExists = false;
@@ -41,8 +42,10 @@ public class QuestionReader {
             dif = Integer.parseInt(infile.nextLine());
             q = new Question(question, options, ans - 65, dif);
             qlist.add(q);
+            qHashMap.put(dif, q);
         }
     }
 
-    public Question getQuestion(int index) { return qlist.get(index);}
+    public Question getQuestion(int dif) { return qlist.get(dif);}
+
 }
