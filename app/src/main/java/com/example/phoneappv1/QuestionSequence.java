@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,22 +17,37 @@ import java.util.ArrayList;
 
 public class QuestionSequence extends AppCompatActivity implements View.OnClickListener {
     QuestionReader qr;
-    int qNum = 0, total, numCorr = 0, curr_dif = 3;
+    int qNum = 0, total, numCorr = 0, curr_dif, curr_prog = -1;
+    boolean fb;
     Question curr_ques;
     int[] diff_tracker = new int[]{0, 0, 0, 0, 0, 0};
+    ProgressBar progressBar;
+    Button exit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.question_sequence);
         Bundle b = getIntent().getExtras();
 
         qr = (QuestionReader) b.get("QuestionReader");
         total = b.getInt("total");
+        curr_dif = b.getInt("diff");
+        fb = b.getBoolean("feedback");
+        String subject = b.getString("subject");
+        ((TextView) findViewById(R.id.txtSubject)).setText(subject);
+        progressBar = (ProgressBar) findViewById(R.id.completeBar);
+        progressBar.setMax(total);
+
+        exit = (Button) findViewById(R.id.exit);
+        exit.setOnClickListener(this);
+
         nextQuestion();
     }
 
     public void nextQuestion() {
+        curr_prog++;
+        progressBar.setProgress(curr_prog);
         if (curr_ques != null) {
             if (curr_ques.isAnsCorrect()) {
                 numCorr++;
@@ -41,17 +57,19 @@ public class QuestionSequence extends AppCompatActivity implements View.OnClickL
             }
         }
         qNum++;
-        if (qNum == total) finish();
-        ArrayList<Question> qs = qr.getQuestionDif(curr_dif);
-        curr_ques = qs.get(diff_tracker[curr_dif]++);
-        if (diff_tracker[curr_dif] >= qs.size()) diff_tracker[curr_dif] = 0;
+        if (qNum > total) finish();
+        else {
+            ArrayList<Question> qs = qr.getQuestionDif(curr_dif);
+            curr_ques = qs.get(diff_tracker[curr_dif]++);
+            if (diff_tracker[curr_dif] >= qs.size()) diff_tracker[curr_dif] = 0;
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragmentContainerView, MCQuestionFragment.newInstance(curr_ques, qNum));
-        ft.commit();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fragmentContainerView, MCQuestionFragment.newInstance(curr_ques, qNum, fb));
+            ft.commit();
+        }
     }
     @Override
     public void onClick(View view) {
-        return;
+        finish();
     }
 }

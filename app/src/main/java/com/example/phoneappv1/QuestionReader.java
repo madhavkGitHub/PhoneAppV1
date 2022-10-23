@@ -15,11 +15,10 @@ public class QuestionReader implements Serializable {
         Question q;
         String question = "";
 
-        int ans, dif;
+        int ans, dif, numQ = Integer.parseInt(infile.readLine());
 
-        while (true) {
+        for (int i = 0; i < numQ; i++) {
             question = infile.readLine();
-            if (question == null) break;
             ans = infile.readLine().charAt(0) - 65;
             String[] options = new String[4];
             options[0] = infile.readLine();
@@ -32,8 +31,8 @@ public class QuestionReader implements Serializable {
             qlist.add(q);
             if (qHashMap.get(q.getDif()) == null) qHashMap.put(dif, new ArrayList<>());
             qHashMap.get(q.getDif()).add(q);
-
         }
+        infile.close();
     }
 
     public HashMap<Integer, ArrayList<Question>> getqHashMap() {

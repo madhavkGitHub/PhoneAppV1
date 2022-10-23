@@ -20,7 +20,6 @@ A
 -180 degrees
 180 degrees
 1
-	
 Which of the following is the best answer for cos^2(θ)?
 B
 -sin^2(θ)

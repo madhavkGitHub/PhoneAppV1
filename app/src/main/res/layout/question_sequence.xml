@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".QuestionSequence"
+    tools:ignore="MissingDefaultResource">
 
     <Button
+        android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:text="Save and Exit"
+        android:text="Exit"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,24 +39,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textSize="25sp"
         android:text="Subject"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/txtProgress"
-        app:layout_constraintStart_toStartOf="@+id/fragmentContainerView" />
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/fragmentContainerView"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtProgress"
+    <ProgressBar
+        android:id="@+id/completeBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginRight="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="10dp"
-        android:text="Progress"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentContainerView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtSubject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtSubject"
+        android:indeterminate="false" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

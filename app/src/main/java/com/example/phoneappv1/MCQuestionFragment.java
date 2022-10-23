@@ -21,17 +21,18 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
     int curr_select = -1;
     TextView q;
     Question question;
-    boolean submitted = false;
+    boolean submitted = false, feedback;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.mc_question, container, false);
     }
 
-    public static MCQuestionFragment newInstance(Question q, int num) {
+    public static MCQuestionFragment newInstance(Question q, int num, boolean fb) {
         Bundle args = new Bundle();
         args.putSerializable("question", q);
         args.putInt("probNum", num);
+        args.putBoolean("feedback", fb);
         MCQuestionFragment fragment = new MCQuestionFragment();
         fragment.setArguments(args);
         return fragment;
@@ -46,6 +47,7 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
         Bundle args = getArguments();
         question = (Question) args.get("question");
         int probNum = args.getInt("probNum");
+        feedback = args.getBoolean("feedback");
 
         q.setText(probNum + ") " + question.getQ());
         String[] ops = question.getOptions();
@@ -67,12 +69,17 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
         else if (id == R.id.btnSubmit) {
             if (curr_select == -1) Toast.makeText(getContext(), "Select an Answer", Toast.LENGTH_SHORT).show();
             else {
-                submitted = true;
-                if (!question.check(curr_select)) {
-                    buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.incorrect));
+                if (!feedback) {
+                    question.check(curr_select);
+                    ((QuestionSequence) getActivity()).nextQuestion();
+                } else {
+                    submitted = true;
+                    if (!question.check(curr_select)) {
+                        buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.incorrect));
+                    }
+                    buttons[question.getAns()].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.correct));
+                    submit.setText("Continue");
                 }
-                buttons[question.getAns()].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.correct));
-                submit.setText("Continue");
             }
         } else {
             int select = 0;
