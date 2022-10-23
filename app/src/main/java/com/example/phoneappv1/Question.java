@@ -6,7 +6,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class Question  implements Serializable {
+public class Question implements Serializable {
 
     private String q; // question, subject, current progress
     private String[] options = new String[4]; // list of four possible answers
@@ -37,7 +37,7 @@ public class Question  implements Serializable {
         return ans;
     }
 
-    public String getQ(){
+    public String getQ() {
         return q;
     }
 

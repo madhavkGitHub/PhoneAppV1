@@ -30,10 +30,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="50dp"
         android:background="@color/purple_200"
+        android:checkedButton="@id/Algebra"
         app:layout_constraintEnd_toEndOf="@+id/txtSubject"
         app:layout_constraintStart_toStartOf="@+id/txtSubject"
-        app:layout_constraintTop_toBottomOf="@+id/txtSubject"
-        android:checkedButton="@id/Algebra">
+        app:layout_constraintTop_toBottomOf="@+id/txtSubject">
 
         <RadioButton
             android:id="@+id/Algebra"
@@ -162,6 +162,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
+        android:isIndicator="true"
         android:progress="3"
         android:rating="3"
         android:tooltipText="Difficulty"

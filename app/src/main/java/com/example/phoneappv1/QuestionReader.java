@@ -43,8 +43,12 @@ public class QuestionReader implements Serializable {
         return qlist;
     }
 
-    public Question getQuestion(int n) { return qlist.get(n);}
+    public Question getQuestion(int n) {
+        return qlist.get(n);
+    }
 
-    public ArrayList<Question> getQuestionDif(int dif) {return qHashMap.get(dif);}
+    public ArrayList<Question> getQuestionDif(int dif) {
+        return qHashMap.get(dif);
+    }
 
 }

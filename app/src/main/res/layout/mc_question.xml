@@ -5,80 +5,80 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <FrameLayout
-        android:id="@+id/mc_ques"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtQuestion"
-        android:layout_width="wrap_content"
-        android:textSize="25sp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="Question"
-        android:textColor="@color/black"/>
+        <FrameLayout
+            android:id="@+id/mc_ques"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
 
-    <Button
-        android:id="@+id/btnA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtQuestion"
-        android:layout_marginBottom="40dp"
-        android:text="Answer A"
-        android:backgroundTint="#C9CCCD"
-        android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/txtQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:text="Question"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/btnB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnA"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#C9CCCD"
-        android:text="Answer B"
-        android:textColor="@color/black"
-        tools:ignore="TextContrastCheck" />
+        <Button
+            android:id="@+id/btnA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtQuestion"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#C9CCCD"
+            android:text="Answer A"
+            android:textColor="@color/black" />
 
-    <Button
-        android:id="@+id/btnC"
+        <Button
+            android:id="@+id/btnB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnA"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#C9CCCD"
+            android:text="Answer B"
+            android:textColor="@color/black"
+            tools:ignore="TextContrastCheck" />
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:layout_below="@id/btnB"
-        android:backgroundTint="#C9CCCD"
-        android:textColor="@color/black"
-        android:text="Answer C" />
+        <Button
+            android:id="@+id/btnC"
 
-    <Button
-        android:id="@+id/btnD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnC"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#C9CCCD"
-        android:text="Answer D"
-        android:textColor="@color/black"
-        tools:ignore="TextContrastCheck" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnB"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#C9CCCD"
+            android:text="Answer C"
+            android:textColor="@color/black" />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnD"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/teal_700"
-        android:text="Submit"
-        android:textColor="@color/material_dynamic_neutral90"
-        android:textSize="25sp" />
-</RelativeLayout>
+        <Button
+            android:id="@+id/btnD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnC"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#C9CCCD"
+            android:text="Answer D"
+            android:textColor="@color/black"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnD"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/teal_700"
+            android:text="Submit"
+            android:textColor="@color/material_dynamic_neutral90"
+            android:textSize="25sp" />
+    </RelativeLayout>
 </ScrollView>

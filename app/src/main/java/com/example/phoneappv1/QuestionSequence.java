@@ -1,11 +1,13 @@
 package com.example.phoneappv1;
 
+import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +59,7 @@ public class QuestionSequence extends AppCompatActivity implements View.OnClickL
             }
         }
         qNum++;
-        if (qNum > total) finish();
+        if (qNum > total) showEndScreen();
         else {
             ArrayList<Question> qs = qr.getQuestionDif(curr_dif);
             curr_ques = qs.get(diff_tracker[curr_dif]++);
@@ -68,6 +70,18 @@ public class QuestionSequence extends AppCompatActivity implements View.OnClickL
             ft.commit();
         }
     }
+
+    public void showEndScreen() {
+        setContentView(R.layout.finish_screen);
+        TextView corr = (TextView) findViewById(R.id.textView2), incorr = (TextView) findViewById(R.id.textView3);
+        corr.setText(numCorr + "");
+        incorr.setText((total - numCorr) + "");
+        Button cont = (Button) findViewById(R.id.button);
+        cont.setOnClickListener(this);
+        RatingBar rb = (RatingBar) findViewById(R.id.ratingBar2);
+        rb.setRating(((float) numCorr) * (float) 5.0 / total);
+    }
+
     @Override
     public void onClick(View view) {
         finish();

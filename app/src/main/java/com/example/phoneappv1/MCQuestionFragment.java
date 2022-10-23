@@ -54,7 +54,7 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
         for (int i = 0; i < 4; i++) {
             buttons[i] = view.findViewById(ids[i]);
             buttons[i].setOnClickListener(this);
-            buttons[i].setText(name[i] + ") " +  ops[i]);
+            buttons[i].setText(name[i] + ") " + ops[i]);
         }
     }
 
@@ -65,9 +65,9 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
             if (id == R.id.btnSubmit) {
                 ((QuestionSequence) getActivity()).nextQuestion();
             }
-        }
-        else if (id == R.id.btnSubmit) {
-            if (curr_select == -1) Toast.makeText(getContext(), "Select an Answer", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.btnSubmit) {
+            if (curr_select == -1)
+                Toast.makeText(getContext(), "Select an Answer", Toast.LENGTH_SHORT).show();
             else {
                 if (!feedback) {
                     question.check(curr_select);
@@ -85,7 +85,8 @@ public class MCQuestionFragment extends Fragment implements View.OnClickListener
             int select = 0;
             for (int i = 0; i < ids.length; i++) if (ids[i] == id) select = i;
 
-            if (curr_select != -1) buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+            if (curr_select != -1)
+                buttons[curr_select].setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
             buttons[select].setBackgroundColor(getResources().getColor(R.color.btnSelect));
             curr_select = select;
         }

@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         confirm_button.setOnClickListener(this);
 
     }
+
     private void newQuestionSequence(String filename, int numQ, int diff, boolean feedback) {
         try {
             Intent intent = new Intent(this, QuestionSequence.class);
