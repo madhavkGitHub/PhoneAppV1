@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             Intent intent = new Intent(this, QuestionSequence.class);
             Bundle b = new Bundle();
-            System.out.println("hi");
+            System.out.println("h");
 
             BufferedReader br = new BufferedReader(new InputStreamReader(this.getAssets().open(filename + ".txt")));
 
